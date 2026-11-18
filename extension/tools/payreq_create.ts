@@ -7,10 +7,13 @@ import * as s from "../lib/schemas";
 
 export default defineTool({
   description:
-    "Seller side: create an escrow pay request for work this agent will deliver. Declare every deliverable and a delivery deadline; the buyer sees them before paying and disputes are decided on them. Returns an id to send to the buyer.",
+    "Seller side: create an escrow pay request for work this agent will deliver. Escrow runs on sepolia (test money) or mainnet, polygon-mainnet, solana-mainnet (live); the seller wallet must be on one of them. Requires the account's user tag to be set once in the dashboard. Declare every deliverable and a delivery deadline; the buyer sees them before paying and disputes are decided on them. Returns an id to send to the buyer.",
   inputSchema: z.object({
     walletId: s.walletId.optional().describe("Seller wallet that receives the payout."),
-    amount: z.string().describe("Price as a decimal string in the settlement token."),
+    amount: z
+      .string()
+      .regex(/^\d+$/)
+      .describe("Price in base units of the settlement token, digits only (e.g. wei on Sepolia)."),
     deliverables: z.array(s.deliverable).min(1).max(20),
     deliverBySeconds: z.number().int().min(3600).describe("Seconds from now to deliver. Must be less than autoReleaseSeconds."),
     expiresInSeconds: z.number().int().min(3600).optional(),

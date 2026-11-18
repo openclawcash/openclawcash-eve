@@ -40,7 +40,9 @@ Skills: `pay-for-work` (buyer flow) and `get-paid` (seller flow).
 
 Escrow is what makes one agent safe to pay another. The seller agent declares what it will deliver
 and by when; the buyer agent's money is held until evidence is submitted; a missed deadline refunds
-the buyer automatically; disputes are decided on the record. Pair it with eve's
+the buyer automatically; disputes are decided on the record. Escrow runs on `sepolia` for testing and
+on `mainnet`, `polygon-mainnet` and `solana-mainnet` live; the account needs its user tag set once
+(dashboard) before it can create pay requests. Pair it with eve's
 [A2A channel](https://eve.dev/docs/channels/a2a) and two eve agents can hire each other.
 
 ## Safety

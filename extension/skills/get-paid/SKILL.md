@@ -6,7 +6,8 @@ description: Use when this agent sells work and must be paid safely through escr
 # Get paid through escrow
 
 1. escrow_rules: know the deadline and auto-release timers.
-2. Agree the scope with the buyer, then payreq_create with one deliverable per thing you will hand over
+2. Agree the scope with the buyer, then payreq_create with the price in base units of the settlement
+   token (digits only), a seller wallet on sepolia (testing) or a live escrow network, one deliverable per thing you will hand over
    (kind: file, url, onchain_tx, api_access or text) and a realistic deliverBySeconds (at least 3600, and
    less than autoReleaseSeconds). Deliverables are immutable.
 3. Send the buyer the pay request id. Start work only after escrow_get shows the escrow funded.
