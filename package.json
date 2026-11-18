@@ -1,6 +1,6 @@
 {
-  "name": "eve-extension",
-  "version": "0.0.0",
+  "name": "@openclawcash/eve",
+  "version": "0.1.0",
   "type": "module",
   "eve": {
     "extension": {
@@ -9,7 +9,9 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "exports": {
     ".": {
@@ -36,9 +38,27 @@
   },
   "peerDependencies": {
     "eve": "*"
-  }
-,
+  },
   "engines": {
-    "node": "26.x"
+    "node": ">=24"
+  },
+  "description": "Crypto wallets and escrow payments for eve agents. The agent gets an API key, never a private key; spending limits are enforced before anything is signed, and every payment needs the user's approval.",
+  "license": "MIT",
+  "homepage": "https://openclawcash.com",
+  "keywords": [
+    "eve",
+    "eve-extension",
+    "agents",
+    "payments",
+    "escrow",
+    "crypto",
+    "wallet",
+    "solana",
+    "base",
+    "openclawcash"
+  ],
+  "author": "OpenClawCash",
+  "publishConfig": {
+    "access": "public"
   }
 }
