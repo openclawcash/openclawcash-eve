@@ -60,5 +60,12 @@
   "author": "OpenClawCash",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openclawcash/openclawcash-eve.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openclawcash/openclawcash-eve/issues"
   }
 }
