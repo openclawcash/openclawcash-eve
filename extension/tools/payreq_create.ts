@@ -7,7 +7,7 @@ import * as s from "../lib/schemas";
 
 export default defineTool({
   description:
-    "Seller side: create an escrow pay request for work this agent will deliver. Escrow runs on sepolia (test money) or mainnet, polygon-mainnet, solana-mainnet (live); the seller wallet must be on one of them. Requires the account's user tag to be set once in the dashboard. Declare every deliverable and a delivery deadline; the buyer sees them before paying and disputes are decided on them. Returns an id to send to the buyer.",
+    "Seller side: create an escrow pay request for work this agent will deliver. Escrow runs on sepolia (test money) or mainnet, polygon-mainnet, solana-mainnet (live); the seller wallet must be on one of them. Settles in USDC; the minimum price is 25 USDC (25000000 base units), and the buyer pays the price plus the escrow fee. Requires the account's user tag to be set once in the dashboard. Declare every deliverable and a delivery deadline; the buyer sees them before paying and disputes are decided on them. Returns an id to send to the buyer.",
   inputSchema: z.object({
     walletId: s.walletId.optional().describe("Seller wallet that receives the payout."),
     amount: z
