@@ -1,0 +1,22 @@
+{
+  "name": "occ-eve-demo-buyer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "eve dev",
+    "build": "eve build",
+    "start": "eve start"
+  },
+  "dependencies": {
+    "@openclawcash/eve": "^0.1.0",
+    "eve": "1.0.2",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.x",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

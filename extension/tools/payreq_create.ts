@@ -21,6 +21,6 @@ export default defineTool({
     disputeWindowSeconds: z.number().int().min(3600).optional(),
     metadata: z.record(z.string(), z.unknown()).optional().describe("Order references only. Never secrets."),
   }),
-  approval: { request: once(), prompt: ({ input: i }) => `Create an escrow pay request for ${i?.amount}?` },
+  approval: { request: once(), prompt: ({ input: i }) => `Create an escrow pay request for ${i?.amount} base units of USDC?` },
   execute: (input, ctx) => occ(ctx, { method: "POST", path: "/api/agent/checkout/payreq", body: input }),
 });

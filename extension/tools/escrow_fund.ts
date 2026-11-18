@@ -14,7 +14,7 @@ export default defineTool({
     slippage: z.number().optional(),
     allowSwapFallback: z.boolean().optional().describe("Defaults to true."),
   }),
-  approval: { request: always(), prompt: ({ input: i }) => `Fund escrow ${i?.id} from wallet ${i?.walletId}?` },
+  approval: { request: always(), prompt: ({ input: i }) => `Pay into escrow ${i?.id} from wallet ${i?.walletId}? The money is held until the seller delivers.` },
   async execute({ id, walletId, slippage, allowSwapFallback = true }, ctx) {
     await assertNetworkAllowed(ctx, { walletId });
     const path = `/api/agent/checkout/escrows/${encodeURIComponent(id)}`;

@@ -28,6 +28,8 @@ interface CallOptions {
   body?: unknown;
   /** Public endpoints (escrow rules) need no key. */
   auth?: boolean;
+  /** Deliberate retry number; gives the retry its own Idempotency-Key so the server runs it again. */
+  attempt?: number;
 }
 
 /**
@@ -99,7 +101,7 @@ export async function occ<T = unknown>(ctx: ToolContext, options: CallOptions): 
       .update(`${options.method} ${options.path} ${JSON.stringify(options.body ?? null)}`)
       .digest("hex")
       .slice(0, 16);
-    headers["Idempotency-Key"] = `eve-${ctx.callId}-${digest}`;
+    headers["Idempotency-Key"] = `eve-${ctx.callId}-${digest}${options.attempt ? `-r${options.attempt}` : ""}`;
   }
 
   const response = await fetch(`${baseUrl()}${options.path}${queryString(options.query)}`, {
@@ -180,7 +182,7 @@ export async function assertNetworkAllowed(
   const network = input.network ?? (await walletNetwork(ctx, input));
   if (!network) {
     throw new OpenClawCashError(
-      "Could not resolve the wallet's network. List wallets with wallets_list and pass a walletId this key can see.",
+      "Could not resolve the wallet's network. walletId must be the wallet's id from wallets_list (for example \"B4MAKJH\"), not its label: call wallets_list and pass the id.",
     );
   }
   if (!extension.config.allowMainnet && !TESTNETS.has(network)) {
