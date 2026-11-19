@@ -2,6 +2,8 @@
 
 Crypto wallets and escrow payments for [eve](https://eve.dev) agents.
 
+![Your agent can do the work. Can it get paid?](media/demo-poster.jpg)
+
 Your agent gets an OpenClawCash API key, never a private key. Spending limits, allowlists and
 testnet-only rules are enforced by OpenClawCash before anything is signed, every money-moving call
 waits for the user's approval in eve, and the mount is **testnet-only until you opt in**.
